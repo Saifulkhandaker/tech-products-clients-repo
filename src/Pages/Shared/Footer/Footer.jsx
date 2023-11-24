@@ -7,7 +7,7 @@ const Footer = () => {
           <aside className="md:ml-2 lg:ml-4 ml-5">
             <img src={logo} alt="" />
             <p className="text-sm lg:text-sm mt-5">
-              Welcome to the best Tech Products site. <br /> We are a team of designers and developers that <br />create high quality Magento, Prestashop, Opencart.
+              Welcome to the best Tech Products site. <br />     We are a team of designers and developers that <br />create high quality Magento, Prestashop, Opencart.
             </p>
           </aside>
           <nav className="md:ml-0 lg:ml-0 ml-5">
