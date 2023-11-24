@@ -29,7 +29,7 @@ const ProductItem = ({item}) => {
         <h2 className="card-title">{name}</h2>
         <h2 ># <span className="font-medium underline">{tags}</span></h2>
         <div className="flex items-center gap-10">
-        <button className="btn bg-none rounded-lg" onClick={handleVote} disabled={hasVoted}>Up Vote</button>
+        <button className="btn bg-white rounded-lg" onClick={handleVote} disabled={hasVoted}>Up Vote</button>
         <p className="text-2xl flex items-center gap-2 text-green-900 font-medium"><MdWhereToVote className="mt-1" />{totalVotes}</p>
         </div>
       </div>

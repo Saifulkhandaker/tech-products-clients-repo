@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import useProducts from "../../../hooks/useProducts";
 import FeaturedItem from "../../Shared/ProductItem/ProductItem";
+import ProductItem from "../../Shared/ProductItem/ProductItem";
 
 const TrendingProducts = () => {
   const [products] = useProducts();
@@ -14,7 +15,7 @@ const TrendingProducts = () => {
       </p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {featured.map((item) => (
-          <FeaturedItem key={item.id} item={item}></FeaturedItem>
+          <ProductItem key={item.id} item={item}></ProductItem>
         ))}
       </div>
       <Link to="/products">
