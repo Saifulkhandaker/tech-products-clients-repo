@@ -1,20 +1,21 @@
 import { useState } from "react";
 import { MdWhereToVote } from "react-icons/md";
+import { Link } from "react-router-dom";
 
 
 const ProductItem = ({item}) => {
-    const {name, img, tags} = item;
+    const {name, img, tags, _id} = item;
     const [totalVotes, setTotalVotes] = useState(0);
-  const [hasVoted, setHasVoted] = useState(false);
+    const [hasVoted, setHasVoted] = useState(false);
 
-  const handleVote = () => {
-    if (!hasVoted) {
+    const handleVote = () => {
+     if (!hasVoted) {
       setTotalVotes(totalVotes + 1);
       setHasVoted(true);
-    } else {
+     } else {
       console.log("You've already voted for this product.");
-    }
-  };
+     }
+     };
 
     return (
         <div className="card bg-[#F2F2F4]  border-2 rounded-none my-10">
@@ -26,7 +27,9 @@ const ProductItem = ({item}) => {
         />
       </figure>
       <div className="card-body items-center text-center">
+        <Link to={`/productDetails/${_id}`}>
         <h2 className="card-title">{name}</h2>
+        </Link>
         <h2 ># <span className="font-medium underline">{tags}</span></h2>
         <div className="flex items-center gap-10">
         <button className="btn bg-white rounded-lg" onClick={handleVote} disabled={hasVoted}>Up Vote</button>
