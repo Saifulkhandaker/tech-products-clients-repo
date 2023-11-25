@@ -1,8 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { FaGoogle } from "react-icons/fa6";
+import { useContext, useState } from "react";
+import { AuthContext } from "../../Providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const Login = () => {
+  const {googleSignIn}= useContext(AuthContext);
+  const location = useLocation();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError]= useState(''); 
 
+
+
+
+  const navigate = useNavigate()
+
+  // handle google sign in
+  const handleGoogle = () => {
+    googleSignIn()
+    .then(result => {
+      Swal.fire({
+        title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
+        setTimeout(() => {
+          navigate('/');
+        }, 3000);
+    })
+  }
 
 
 
@@ -55,7 +79,7 @@ const Login = () => {
                   <button className="btn text-black bg-none border-black">Login</button>
                   <p>
                     or sign with <br />
-                    <button className="btn w-full text-black bg-none border-black">
+                    <button onClick={handleGoogle} className="btn w-full text-black bg-none border-black">
                     <FaGoogle /> Google
                     </button>
                   </p>

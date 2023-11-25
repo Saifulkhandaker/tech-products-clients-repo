@@ -1,12 +1,13 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { FiGrid } from "react-icons/fi";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import logo from "../../../assets/icons/logo.jpg"
-// import { AuthContext } from "../../Hooks/AuthProvider";
+import { AuthContext } from "../../../Providers/AuthProvider";
+
 
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(!false);
-    // const { user, logOut } = useContext(AuthContext);
+    const { user, logOut } = useContext(AuthContext);
 
     const [theme, setTheme] = useState(
         localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -31,20 +32,20 @@ const Navbar = () => {
 
     const navigate = useNavigate();
 
-    // const handleLogOut = () => {
-    //     logOut()
-    //         .then(() => {
-    //             navigate('/')
-    //         })
-    //         .catch(error => {
-    //             console.log(error.message);
-    //         })
-    // }
+    const handleLogOut = () => {
+        logOut()
+            .then(() => {
+                navigate('/')
+            })
+            .catch(error => {
+                console.log(error.message);
+            })
+    }
 
     return (
         <div className="shadow-lg">
             <div className="max-w-7xl mx-auto">
-                <nav className="px-6 py-7 flex justify-between items-center">
+                <nav className="px-6 py-4 flex justify-between items-center">
                     <div className="flex items-center cursor-pointer">
                         <NavLink to='/' className='text-3xl font-bold'>
                             <img src={logo} alt="" />
@@ -112,21 +113,20 @@ const Navbar = () => {
 
                                 </label>
                             </div>
-{/* 
-                            User Dropdown
+
+                            {/* User Dropdown */}
                             {
                                 user ?
                                     <>
                                         <div className="flex justify-center items-center gap-x-4 cursor-pointer">
                                             <div className="dropdown dropdown-end">
                                                 <div className="avatar online m-2" tabIndex={0}>
-                                                    <div className="w-11 rounded-full">
+                                                    <div className="w-14 rounded-full">
                                                         <img src={user?.photoURL} />
                                                     </div>
                                                 </div>
                                                 <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box">
-                                                    <li className="py-4 px-8">{user?.displayName}</li>
-                                                    <li className="py-4 px-8">{user?.email}</li>
+                                                    <li className="py-4 px-8    ">{user?.displayName}</li>
                                                     <li>
                                                         <NavLink onClick={handleLogOut} to='/login' className='py-4 px-8'>
                                                             Logout
@@ -141,7 +141,7 @@ const Navbar = () => {
                                             Login
                                         </NavLink>
                                     </>
-                            } */}
+                            }
                         </div>
                     </div>
                 </nav>
