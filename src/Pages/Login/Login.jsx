@@ -5,7 +5,7 @@ import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
 
 const Login = () => {
-  const {googleSignIn}= useContext(AuthContext);
+  const {googleSignIn, signIn}= useContext(AuthContext);
   const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -29,11 +29,26 @@ const Login = () => {
   }
 
 
-
+// handle login
   const handleLogin = (e) => {
     e.preventDefault();
-    
-  };
+    if((email, password)){
+      signIn(email, password)
+      .then(result => {
+        setError('');
+        Swal.fire({
+          title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
+          setTimeout(() => {
+            navigate(location?.state ? location.state : '/');
+          }, 3000);
+      })
+      .catch((err) => {
+        setError('Invalid email or password');
+        Swal.fire({
+          title: 'Error!',text: 'Invalid email or password',icon: 'error',confirmButtonText: 'Error' });
+      })
+    }  
+ }
 
   return (
     <div className="w-11/12 mx-auto">
