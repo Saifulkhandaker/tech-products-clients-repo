@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { FiGrid } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import logo from "../../../assets/icons/logo.jpg"
@@ -126,9 +126,12 @@ const Navbar = () => {
                                                     </div>
                                                 </div>
                                                 <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box">
-                                                    <li className="py-4 px-8    ">{user?.displayName}</li>
+                                                    <li className="py-4 px-5    ">{user?.displayName}</li>
+                                                    <Link to="/dashboard/profile">
+                                                    <li className=" px-5">Dashboard</li>
+                                                    </Link>
                                                     <li>
-                                                        <NavLink onClick={handleLogOut} to='/login' className='py-4 px-8'>
+                                                        <NavLink onClick={handleLogOut} to='/login' className='py-2 px-5    '>
                                                             Logout
                                                         </NavLink>
                                                     </li>
