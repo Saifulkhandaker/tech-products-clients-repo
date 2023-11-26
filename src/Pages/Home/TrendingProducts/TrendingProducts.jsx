@@ -6,7 +6,7 @@ import ProductItem from "../../Shared/ProductItem/ProductItem";
 const TrendingProducts = () => {
   const [products] = useProducts();
   const featured = products.filter((item) => item.category === "trending");
-  console.log(featured.length);
+  // console.log(featured.length);
   return (
     <div className="mt-10 w-11/12 mx-auto">
       <h1 className="text-3xl font-medium">TRENDING PRODUCTS</h1>

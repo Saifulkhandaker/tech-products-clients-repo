@@ -6,7 +6,7 @@ import ProductItem from '../Shared/ProductItem/ProductItem';
 const Products = () => {
 
     const [products] = useProducts();
-    console.log(products);
+    // console.log(products);
 
     return (
         <div>

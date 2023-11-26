@@ -4,7 +4,7 @@ import ProductItem from "../../Shared/ProductItem/ProductItem";
 const FeaturedProducts = () => {
   const [products] = useProducts();
   const featured = products.filter((item) => item.category === "featured");
-  console.log(featured.length);
+  // console.log(featured.length);
   return (
     <div className="mt-10 w-11/12 mx-auto">
       <h1 className="text-3xl font-medium">FEATURED PRODUCTS</h1>
