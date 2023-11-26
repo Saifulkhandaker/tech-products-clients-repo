@@ -16,8 +16,8 @@ const DashBoard = () => {
     return (
         <div className="flex py-10 px-10 gap-10">
             {/* dashboard sidebar  */}
-            <div className="w-64 h-screen border  bg-slate-100">
-                <ul className="menu py-8 px-3 border-b border-slate-600 space-y-2 lg:text-lg">
+            <div className="md:w-64 h-screen border  bg-slate-100">
+                <ul className="menu py-8 md:px-3 border-b border-slate-600 space-y-2 lg:text-lg">
                    {
                     isAdmin ? <>
                     <li><NavLink to="/dashboard/statistics"><FcStatistics></FcStatistics> Statistics</NavLink></li><hr />   
@@ -33,9 +33,9 @@ const DashBoard = () => {
                    }
                 </ul>
                 {/* shared nav links */}
-                <ul className="menu py-8 px-3 lg:text-lg space-y-2">
+                <ul className="menu py-8 md:px-3 lg:text-lg space-y-2">
                     <li><NavLink to="/"><IoHomeSharp></IoHomeSharp> Home</NavLink></li><hr />
-                    <li><NavLink to="/products"><BsShop></BsShop> All Products</NavLink></li><hr />
+                    <li><NavLink to="/products"><BsShop></BsShop> All Products</NavLink></li>
                 </ul>
             </div>
             {/* dashboard content */}
