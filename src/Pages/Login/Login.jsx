@@ -3,9 +3,11 @@ import { FaGoogle } from "react-icons/fa6";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../hooks/useAxiosPublic";
 
 const Login = () => {
   const {googleSignIn, signIn}= useContext(AuthContext);
+  const axiosPublic = useAxiosPublic();
   const location = useLocation();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -20,11 +22,19 @@ const Login = () => {
   const handleGoogle = () => {
     googleSignIn()
     .then(result => {
-      Swal.fire({
-        title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
-        setTimeout(() => {
-          navigate('/');
-        }, 3000);
+      const userInfo = {
+        email: result.user?.email,
+        name: result.user?.displayName
+      }
+      axiosPublic.post('/users', userInfo)
+      .then(res => {
+        Swal.fire({
+          title: 'Success!',text: 'Successfully logged in',icon: 'success',confirmButtonText: 'Cool' });
+          setTimeout(() => {
+            navigate('/');
+          }, 3000);
+      })
+      
     })
   }
 

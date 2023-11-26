@@ -2,8 +2,10 @@ import { useContext, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProvider';
 import Swal from 'sweetalert2';
+import useAxiosPublic from '../../hooks/useAxiosPublic';
 
 const Register = () => {
+    const axiosPublic = useAxiosPublic();
     const {signUp, handleUpdateProfile} = useContext(AuthContext);
     const [error, setError] = useState('');
     const navigate = useNavigate();
@@ -32,11 +34,24 @@ const Register = () => {
           .then(result => {
             handleUpdateProfile(name, img)
             .then(() => {
-              Swal.fire({
-                title: 'Success!',text: 'Successfully registered',icon: 'success',confirmButtonText: 'Cool' });
-                setTimeout(() => {
-                  navigate('/');
-                }, 3000);
+              // create user entry in the database
+              const userInfo = {
+                name: name,
+                email: email,
+                img: img,
+              }
+              axiosPublic.post('/users', userInfo)
+              .then(res => {
+                if(res.data.insertedId){
+                  console.log('user added to the database');
+                  Swal.fire({
+                    title: 'Success!',text: 'Successfully registered',icon: 'success',confirmButtonText: 'Cool' });
+                    setTimeout(() => {
+                      navigate('/');
+                    }, 3000);
+                }
+              })
+              
             })
           })
         }
