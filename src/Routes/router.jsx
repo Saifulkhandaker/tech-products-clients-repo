@@ -13,6 +13,9 @@ import DashBoard from "../Layout/DashBoard";
 import Profile from "../Pages/Dashboard/Profile/Profile";
 import AddProduct from "../Pages/Dashboard/AddProduct/AddProduct";
 import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
+import Statistics from "../Pages/AdminDashboard/Statistics/Statistics";
+import ManageUsers from "../Pages/AdminDashboard/ManageUsers/ManageUsers";
+import Coupon from "../Pages/AdminDashboard/Coupon/Coupon";
 
   export const router = createBrowserRouter([
     {
@@ -48,6 +51,20 @@ import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
       path: 'dashboard',
       element: <PrivateRoute><DashBoard></DashBoard></PrivateRoute>,
       children: [
+        // admin routes
+        {
+          path: 'statistics',
+          element: <Statistics></Statistics>
+        },
+        {
+          path: 'manageUsers',
+          element: <ManageUsers></ManageUsers>
+        },
+        {
+          path: 'coupons',
+          element: <Coupon></Coupon>
+        },
+        // users routes
         {
           path: 'profile',
           element: <Profile></Profile>
