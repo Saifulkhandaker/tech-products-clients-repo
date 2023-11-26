@@ -6,12 +6,13 @@ import { IoHomeSharp } from "react-icons/io5";
 import { FcStatistics } from "react-icons/fc";
 import { FaUsers } from "react-icons/fa6";
 import { RiCoupon3Fill } from "react-icons/ri";
+import useAdmin from "../hooks/useAdmin";
 
 
 const DashBoard = () => {
 
 
-    const isAdmin = true;
+    const [isAdmin] = useAdmin();
 
     return (
         <div className="flex py-10 px-10 gap-10">
