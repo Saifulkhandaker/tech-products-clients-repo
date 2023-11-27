@@ -31,7 +31,7 @@ const AddProduct = () => {
 
         // send date to the server
     fetch(
-        "http://localhost:5000/newProduct",
+        "http://localhost:5000/product",
         {
           method: "POST",
           headers: {
