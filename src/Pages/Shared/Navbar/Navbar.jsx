@@ -131,7 +131,7 @@ const Navbar = () => {
                                                     <li className="py-4 px-5    ">{user?.displayName}</li>
                                                     
                                                     {
-                                                        isAdmin ? <Link to="/dashboard/manageUsers"><li className=" px-5">Dashboard</li></Link>
+                                                        isAdmin ? <Link to="/dashboard/statistics"><li className=" px-5">Dashboard</li></Link>
                                                         :
                                                         <Link to="/dashboard/profile"><li className=" px-5">Dashboard</li></Link>
                                                     }
