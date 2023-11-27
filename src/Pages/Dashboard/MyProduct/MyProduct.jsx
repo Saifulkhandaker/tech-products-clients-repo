@@ -1,15 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import useProducts from '../../../hooks/useProducts';
 import { Link } from 'react-router-dom';
 import { FaEdit, FaTrashAlt } from "react-icons/fa";
+import useAxiosPublic from '../../../hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
 
 const MyProduct = () => {
 
-    const [products] = useProducts();
-    const myProducts = products.filter(product => product.ownerName);
-    console.log(myProducts);
+    const [product, loading, refetch] = useProducts();
+    const myProducts = product.filter(product => product.ownerName);
+    const axiosPublic = useAxiosPublic();
     
-
+    const handleDelete = (id) => {
+        Swal.fire({
+            title: "Are you sure?",
+            text: "You won't be able to revert this!",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#3085d6",
+            cancelButtonColor: "#d33",
+            confirmButtonText: "Yes, delete it!"
+          }).then( async (result) => {
+            if (result.isConfirmed) {
+                const res = await axiosPublic.delete(`/product/${id}`);
+                if(res.data.deletedCount > 0){
+                    refetch()
+                    Swal.fire({
+                        title: "Deleted!",
+                        text: `Item has been deleted`,
+                        icon: "success"
+                    });
+                    loading(false);
+                }
+               
+            }
+          });
+        }
     return (
         <div>
             <div className="border shadow-xl bg-white py-10 px-5 mt-5">
