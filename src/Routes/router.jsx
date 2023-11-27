@@ -16,6 +16,7 @@ import MyProduct from "../Pages/Dashboard/MyProduct/MyProduct";
 import Statistics from "../Pages/AdminDashboard/Statistics/Statistics";
 import ManageUsers from "../Pages/AdminDashboard/ManageUsers/ManageUsers";
 import Coupon from "../Pages/AdminDashboard/Coupon/Coupon";
+import UpdateProduct from "../Pages/Dashboard/UpdateProduct/UpdateProduct";
 
   export const router = createBrowserRouter([
     {
@@ -72,6 +73,11 @@ import Coupon from "../Pages/AdminDashboard/Coupon/Coupon";
         {
           path: 'addProduct',
           element: <AddProduct></AddProduct>
+        },
+        {
+          path: 'updateItem/:id',
+          element: <UpdateProduct></UpdateProduct>,
+          loader: ({params}) => fetch(`http://localhost:5000/product/${params.id}`)
         },
         {
           path: 'myProduct',
