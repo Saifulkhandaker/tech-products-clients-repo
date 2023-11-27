@@ -13,7 +13,7 @@ const Profile = () => {
                 <div className="space-y-3">
                     <h1 className="lg:text-5xl md:text-3xl lg:mt-0 mt-5">{user.displayName}</h1>
                     <h1 className="lg:text-xl md:text-lg">{user.email}</h1>
-                    <button className="btn rounded-lg border-black">Subscribe /10$</button>
+                    <button className="btn rounded-lg border-black">Subscribe /10$(month)</button>
                 </div>
             </div>
         </div>

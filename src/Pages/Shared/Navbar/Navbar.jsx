@@ -3,11 +3,13 @@ import { FiGrid } from "react-icons/fi";
 import { useContext, useEffect, useState } from "react";
 import logo from "../../../assets/icons/logo.jpg"
 import { AuthContext } from "../../../Providers/AuthProvider";
+import useAdmin from "../../../hooks/useAdmin";
 
 
 const Navbar = () => {
     const [toggleMenu, setToggleMenu] = useState(!false);
     const { user, logOut } = useContext(AuthContext);
+    const [isAdmin] = useAdmin();
 
     const [theme, setTheme] = useState(
         localStorage.getItem("theme") ? localStorage.getItem("theme") : "light"
@@ -127,9 +129,13 @@ const Navbar = () => {
                                                 </div>
                                                 <ul className="p-2 shadow menu dropdown-content z-[1] bg-base-100 rounded-box">
                                                     <li className="py-4 px-5    ">{user?.displayName}</li>
-                                                    <Link to="/dashboard/profile">
-                                                    <li className=" px-5">Dashboard</li>
-                                                    </Link>
+                                                    
+                                                    {
+                                                        isAdmin ? <Link to="/dashboard/manageUsers"><li className=" px-5">Dashboard</li></Link>
+                                                        :
+                                                        <Link to="/dashboard/profile"><li className=" px-5">Dashboard</li></Link>
+                                                    }
+
                                                     <li>
                                                         <NavLink onClick={handleLogOut} to='/login' className='py-2 px-5    '>
                                                             Logout
