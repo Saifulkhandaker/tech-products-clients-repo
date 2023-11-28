@@ -7,7 +7,7 @@ const Coupon = () => {
     const [coupon, setCoupon] = useState([]);
     
     useEffect(() => {
-        fetch('/public/coupon.json')
+        fetch('https://tech-products-server.vercel.app/coupon')
         .then(res => res.json())
         .then(data => {
             setCoupon(data)
@@ -40,7 +40,7 @@ const Coupon = () => {
                             <th>
                             { index+1 }
                             </th>
-                            <td className='flex items-center mt-3 gap-2 text-red-700 font-medium'><RiCoupon2Line></RiCoupon2Line>{item.coupon_code}</td>
+                            <td className='flex items-center mt-3 gap-2  font-medium'><RiCoupon2Line className='text-xl font-medium text-red-700'></RiCoupon2Line>{item.coupon_code}</td>
                             <td className="text-xs md:text-sm lg:text-lg p-0">{item.expiration_date}</td>
                             <td className="text-xs md:text-sm lg:text-lg p-0 flex items-center font-medium text-green-700"><FaDollarSign/>{item.discount_amount}</td>
                             <td>

@@ -7,7 +7,7 @@ const useProducts = () => {
   //   const [loading, setLoading] = useState(true);
 
   // useEffect(() => {
-  //   fetch("http://localhost:5000/product/")
+  //   fetch("https://tech-products-server.vercel.app/product/")
   //     .then((res) => res.json())
   //     .then((data) => {
   //       setProducts(data);
@@ -16,16 +16,20 @@ const useProducts = () => {
   // },[]);
   // return [products, loading]
 
-  const axiosPublic = useAxiosPublic(); 
+  const axiosPublic = useAxiosPublic();
 
-  const {data: product = [], isPending: loading, refetch} = useQuery({
-    queryKey: ['product'],
-    queryFn: async() => {
-      const res = await axiosPublic.get('/product'); // --------------> trasnstackQuery
+  const {
+    data: product = [],
+    isPending: loading,
+    refetch,
+  } = useQuery({
+    queryKey: ["product"],
+    queryFn: async () => {
+      const res = await axiosPublic.get("/product"); // --------------> trasnstackQuery
       return res.data;
-    }
-  })
+    },
+  });
 
-  return [product, loading, refetch]
-}
+  return [product, loading, refetch];
+};
 export default useProducts;

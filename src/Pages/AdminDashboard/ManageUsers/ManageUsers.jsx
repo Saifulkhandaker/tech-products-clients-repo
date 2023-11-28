@@ -52,7 +52,7 @@ const ManageUsers = () => {
             refetch();
             Swal.fire({
               title: "Deleted!",
-              text: "Order Item Deleted",
+              text: "User Deleted Successfully",
               icon: "success",
             });
           }
