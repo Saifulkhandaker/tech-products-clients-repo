@@ -1,5 +1,6 @@
 # Project : Clima Tech-Hunt
 # Live : https://tech-product-51c1d.web.app/
+# Live : https://tech-product.netlify.app/
 
 # Project Features :
 
